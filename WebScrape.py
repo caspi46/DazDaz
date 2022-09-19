@@ -6,11 +6,17 @@ import requests
 from bs4 import BeautifulSoup
 import threading
 import json
+
 # This class webscrape for DAZADAZ project.
-# In read,
-# contents -> the video link & save the link the self.link
-# -> title, views, date, comments, likes & save them in the lists
-# save the data into sql
+# Process,
+# read video list (videos) -> go to the link & check their video title
+# -> check if the video is a song (loop)
+# if so: -> get other info(views, likes, date) -> put their lists
+# not: -> continue
+# -> set total, view&title, like&title, and the sum of the view & like
+
+# when main calls gr (graph) function,
+# set top 25 view & like list -> call GraphCreator
 
 # 9/14/22
 class Webscrape:
@@ -24,6 +30,7 @@ class Webscrape:
         self.link = [ ]
         self.total = [ ]
         self.totalView = 0
+        self.totalLike = 0
         self.info = [ ]
         self.view_title_link = [ ]
         self.like_title_link = [ ]
@@ -41,8 +48,10 @@ class Webscrape:
             thd.join()
         self.setTotal()
         self.setViewTitle()
-        self.totalView = sum(self.view)
         self.setLikeTitle()
+        self.totalView = sum(self.view)
+        self.totalLike = sum(self.like)
+        
 
     def videoLikes(self, i):
         r = requests.get(i, headers={'User-Agent': ''})
