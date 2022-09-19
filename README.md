@@ -47,3 +47,6 @@
 # put info (id, song title, info, view, like, the post date, and the link)
 # In CreateGraph class,
 # used pylab library
+
+# I referred to some sites to scrape youtube video site
+# https://www.thepythoncode.com/article/get-youtube-data-python
