@@ -1,10 +1,5 @@
 import sqlite3
-import requests
-from bs4 import BeautifulSoup
-import matplotlib.pyplot as plt
 import threading
-from sklearn.linear_model import LinearRegression
-import pandas as pd
 from pylab import *
 from collections import namedtuple
 
@@ -43,7 +38,9 @@ class sqlite:
                 sqlite_create_table_query = '''CREATE TABLE Database(
                                                       ID INTEGER PRIMARY KEY,
                                                       TITLE TEXT NOT NULL,
+                                                      INFO TEXT NOT NULL,
                                                       VIEW INTEGER NOT NULL,
+                                                      LIKE INTEGER NOT NULL,
                                                       DATE TEXT NOT NULL,
                                                       Link TEXT NOT NULL);'''
                 # LIKE INTEGER PRIMARY KEY,
@@ -62,7 +59,7 @@ class sqlite:
                 sqliteConnection.close()
                 print("sqlite connection is closed")
 
-    def insert(self, id, title, view, date, link):
+    def insert(self, id, title, info, view, like, date, link):
         condition.acquire()
         try:
             sqliteConnection = sqlite3.connect(self.afile)
@@ -70,9 +67,9 @@ class sqlite:
             print("Connected to SQLite")
 
             sqlite_insert_blob_query = """INSERT INTO Database
-                                        (ID, TITLE, VIEW, DATE, LINK)
-                                        VALUES (?, ?, ?, ?, ?)"""
-            data_tuple = (id, title, view, date, link)
+                                        (ID, TITLE, INFO, VIEW, LIKE, DATE, LINK)
+                                        VALUES (?, ?, ?, ?, ?, ?, ?)"""
+            data_tuple = (id, title, info, view, like, date, link)
 
             cursor.execute(sqlite_insert_blob_query, data_tuple)
             sqliteConnection.commit()
@@ -87,4 +84,5 @@ class sqlite:
                 sqliteConnection.close()
                 print("The sqlite connection is closed")
         condition.release()
+
 
