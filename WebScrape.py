@@ -140,7 +140,10 @@ class Webscrape:
             return True
 
         elif t.find('(') != -1 and t.find(')') != 1:  # check world.execute(me); (...)
-            artist = re.findall(remain, t)[0]
+            if t.count('(') != 1:
+                artist = re.findall(remain, t)[-1]
+            else:
+                artist = re.findall(remain, t)[0]
             self.info.append(artist)
         else:
             self.info.append("UNKNOWN")
