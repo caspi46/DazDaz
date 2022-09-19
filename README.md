@@ -36,3 +36,14 @@
 # WebScrape: scraping web (use "https://www.youtube.com/c/Dazbeeee/videos")
 # SaveSQL: save the data (id, title, view, like, comment, and link + a(may be the name of other artists if it's collab)
 
+# Final
+# In main,
+# call web scrape class
+# In Web Scrape Class,
+# set the video link list to get info (song title, info(original artist, etc), view, like, the post date, and link)
+# check if the video is a song or not, not to include shorts video, teaser video, etc
+# set top 25 views and top 25 likes videos list
+# In sql class,
+# put info (id, song title, info, view, like, the post date, and the link)
+# In CreateGraph class,
+# used pylab library
