@@ -37,6 +37,8 @@
 # SaveSQL: save the data (id, title, view, like, comment, and link + a(may be the name of other artists if it's collab)
 
 # Final
+# In General,
+# I didn't add the number of the comments. 
 # In main,
 # call web scrape class
 # In Web Scrape Class,
@@ -48,5 +50,13 @@
 # In CreateGraph class,
 # used pylab library
 
-# I referred to some sites to scrape youtube video site
+# I referred to some site(s) for this project:
+# For web scrape:
 # https://www.thepythoncode.com/article/get-youtube-data-python
+
+# During Process,
+# At first, I decided to use selenium with chromedriver. 
+# But, I changed my mind to use HTML session because it doesn't read whole page somehow (even though I referred to someone's solution) and have short line.
+# However, somehow there are some speed issue (too slow, it took over 10 min). So, I fixed second HTML session as request - bs4 way.
+# Also, added threading. 
+
