@@ -9,9 +9,12 @@ def convertToBinaryData(filename):
     with open(filename, 'rb') as file:
         blobData = file.read()
     return blobData
+
+# sqlite class
+# put info (id, song title, additional info, view #, like #, post date & link) into sql file
 class sqlite:
     def __init__(self):
-        self.afile = "DAZDAZ.db"
+        self.afile = "DAZDAZ.db" # file name
 
     def connect(self):
         try:
