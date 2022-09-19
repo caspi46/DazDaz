@@ -59,4 +59,4 @@
 # But, I changed my mind to use HTML session because it doesn't read whole page somehow (even though I referred to someone's solution) and have short line.
 # However, somehow there are some speed issue (too slow, it took over 10 min). So, I fixed second HTML session as request - bs4 way.
 # Also, added threading. 
-
+# Although the graph can be displayed in correct data, I found out the matplotlib library cannot display Japanese words (assume Korean, too) So, I fixed it by using pylab.
