@@ -52,7 +52,6 @@ class Webscrape:
         self.totalView = sum(self.view)
         self.totalLike = sum(self.like)
         
-
     def videoLikes(self, i):
         r = requests.get(i, headers={'User-Agent': ''})
         likes = r.text[:r.text.find(' likes"')]
@@ -122,11 +121,11 @@ class Webscrape:
             if title.find(j) != -1:
                 return True
         return False
+    
     def splitTitle(self, t):
         remain = r'\(([^)]+)'
         remove = "\(.*\)|\s-\s."
         remain_original = r'\|'
-        excludes = ["Teaser", "#Shorts", "#YouTubeMusic", "RELEASED", "Selection Album"]
         excludes2 = ['  ／', " / ", " ／",
                      "/", "|"]
         # M/V means the video is her original song
