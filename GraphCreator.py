@@ -1,17 +1,7 @@
-import sqlite3
-import requests
-from bs4 import BeautifulSoup
-import matplotlib.pyplot as plt
-import threading
-from sklearn.linear_model import LinearRegression
-import pandas as pd
 from pylab import *
-from functools import partial
-from collections import namedtuple
 import plotly.graph_objects as px
-import numpy as np
 import plotly.graph_objects as go
-import webbrowser
+#import webbrowser
 
 class GraphCreator:
     def __init__(self, view_title_link, like_title_link):
@@ -30,9 +20,6 @@ class GraphCreator:
         self.view_di = dict(zip(self.num, view_title_link))
         self.like_di = dict(zip(self.num, like_title_link))
 
-        if self.view == self.like:
-            print(True)
-        print(False)
 
 
     def createTable(self):
@@ -69,29 +56,4 @@ class GraphCreator:
             ])
 
         plot.show()
-        '''
-        t = np.arange(0.0, 1.0, 0.01)
-        fig, ax = plt.subplots()
-        ax.bar(self.num, self.view, width=0.3)
- #       ax.title('TOP 20 VIEWS')
-  #      ax.xlabel('VIDEO')
-   #     ax.ylabel('VIEWS')
-        plt.subplots_adjust(left=0.3)
-        # plt.bar(self.view, self.num)
 
-        # adjust radio buttons
-        axcolor = 'lightgoldenrodyellow'
-        rax = fig.axes([0.05, 0, 0.8, 1],
-                       facecolor=axcolor)
-
-        radio = RadioButtons(rax, self.num,
-                             25,
-                             activecolor='b')
-        radio.on_clicked(self.prints)
-
-        plt.show()
-'''
-    def prints(self, i):
-        print("TITLE - VIEW")
-        print(self.dics[i][0], " - ", self.dics[i][1])
-        webbrowser.open_new_tab(self.dics[i][2])
